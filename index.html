@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putra Medika Product List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Salinan dari Logo Medis dan Kesehatan Detak Jantung Superminimalis Krem dan Hitam.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#produk">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#map">Maps</a></li>
+            </ul>
+            <div class="burger" onclick="toggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>        
+    </header>
+    <img class="banner" style="width: 50%; height: auto; display: block; margin: auto;" src="Putra medika Banner.png" alt="Putra Medika Banner">
+    <main>
+        <section>
+            <h2 style="color: rgb(52, 30, 175);">Our Products</h2>
+            <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()">
+            <div id="produk" class="product-list">
+                <article class="product-item">
+                    <a style="text-decoration: none;" href="spesiviProd/gunting/Gunting.html">
+                        <img src="Salinan dari Logo Medis dan Kesehatan Detak Jantung Superminimalis Krem dan Hitam.png" alt="Gunting">
+                        <h3>Gunting</h3>
+                        <p>Rp.29.99</p>
+                        <div class="product-details">
+                            <p>Short description of the product. This can be a brief detail about the product.</p>
+                        </div>
+                    </a>
+                    <button>Stock <span id="guntingStock">99</span></button>
+                </article>      
+                <article class="product-item">
+                    <a style="text-decoration: none;" href="spesiviProd/kursiRoda/KursiRoda.html">
+                        <img src="Salinan dari Logo Medis dan Kesehatan Detak Jantung Superminimalis Krem dan Hitam.png" alt="Kursi Roda">
+                        <h3>Kursi Roda</h3>
+                        <p>Rp.299.99</p>
+                        <div class="product-details">
+                            <p>Short description of the product. This can be a brief detail about the product.</p>
+                        </div>
+                    </a>
+                    <button>Stock <span id="KursiRodaStock">80</span></button>
+                </article>  
+                <article class="product-item">
+                    <a style="text-decoration: none;" href="spesiviProd/pinset/Pinset.html">
+                        <img src="Salinan dari Logo Medis dan Kesehatan Detak Jantung Superminimalis Krem dan Hitam.png" alt="Pinset">
+                        <h3>Pinset</h3>
+                        <p>Rp.29.99</p>
+                        <div class="product-details">
+                            <p>Short description of the product. This can be a brief detail about the product.</p>
+                        </div>
+                    </a>
+                    <button>Stock <span id="PinsetStock">80</span></button>
+                </article>  
+                <!-- Add more product items as needed -->
+            </div>
+        </section>
+    </main>
+    <button onclick="scrollToTop()" id="scrollBtn" title="Go to top">&#8593;</button>
+    <footer id="contact">
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>Email: ud.putramedika12@gmail.com</p>
+            <p>Instagram: putramedika_alkes</p>
+            <p>WhatsApp: +6285854194810</p>
+        </div>
+    </footer>
+    <div class="footer-section" id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15824.534968460788!2d112.6846965!3d-7.4504525!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e1430cc338bf%3A0x6ab968641bfc9fb5!2sAlat%20kesehatan%20ud%20putra%20medika!5e0!3m2!1sid!2sid!4v1716207473528!5m2!1sid!2sid" width="99%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalProductName"></h2>
+            <p id="modalProductDescription"></p>
+            <p id="modalProductPrice"></p>
+            <!-- Add more details as needed -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="stok.js"></script>
+    <script>
+        // When the page is loaded, update stock display
+        window.onload = function() {
+            updateStockDisplay("gunting", getStock("gunting"));
+            updateStockDisplay("KursiRoda", getStock("KursiRoda"));
+            updateStockDisplay("Pinset", getStock("Pinset"));
+        };
+    </script>
+    <script>
+        // script.js
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        }
+    </script>
+    <script>
+        function buyViaWhatsApp() {
+            window.location.href = "https://api.whatsapp.com/send?phone=nomor_telepon_anda";
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function filterProducts() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const products = document.querySelectorAll('.product-item');
+
+            products.forEach(product => {
+                const title = product.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(filter)) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.display = 'none';
+        }
+
+        function updateStockDisplay(product, stock) {
+            document.getElementById(product + 'Stock').textContent = stock;
+        }
+
+        function getStock(product) {
+            // This function should return the stock of the specified product.
+            // Replace this with actual logic to get the stock from your backend or database.
+            const stockData = {
+                gunting: 99,
+                KursiRoda: 80,
+                Pinset: 80
+            };
+            return stockData[product];
+        }
+    </script>
+</body>
+</html>
