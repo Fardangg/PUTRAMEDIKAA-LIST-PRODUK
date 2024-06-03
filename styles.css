@@ -280,3 +280,18 @@ footer {
 #scrollBtn:hover {
     background-color: #555;
 }
+
+
+
+
+.social-icons img {
+    width: 40px; /* Mengubah ukuran gambar menjadi lebih kecil */
+    height: auto; /* Mengubah ukuran gambar menjadi lebih kecil */
+}
+.social-icons {
+    margin-top: 10px;
+}
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+}
