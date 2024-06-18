@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Produk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .option-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .option {
+            border: 2px solid #a1a5a8;
+            width: 30%; /* Mengurangi lebar kotak */
+            height: 50px; /* Mengurangi tinggi kotak */
+            margin: 0 5px; /* Mengurangi jarak antar kotak */
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .option.selected {
+            background-color: #0baa13;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a style="color: aliceblue;" href="/index.html">PUTRA MEDIKA</a>
+    </nav>
+    <div class="container">
+        <h2>Kursi Roda</h2>
+        <div class="product-container">
+            <div class="product-image">
+                <img id="mainImage" src="Salinan dari Logo Medis dan Kesehatan Detak Jantung Superminimalis Krem dan Hitam.png" alt="Gunting">
+                <div class="thumbnail-container">
+                    <img src="https://upload.jaknot.com/images/products/ac11bc/original/pinset-lurus-stainless-steel-laboratorium-gooi-ts-12.jpg" class="thumbnail" alt="Gunting 1" onclick="changeImage(this)">
+                    <img src="Salinan dari Logo Medis dan Kesehatan Detak Jantung Superminimalis Krem dan Hitam.png" class="thumbnail" alt="Gunting 2" onclick="changeImage(this)">
+                    <img src="https://upload.jaknot.com/2023/05/images/products/efd196/original/gooi-pinset-lurus-stainless-steel-laboratorium-ts-11.jpg" class="thumbnail" alt="Gunting 3" onclick="changeImage(this)">
+                </div>
+            </div>
+            <div class="product-details">
+                <h3>Deskripsi Produk:</h3>
+                <p>Bahan Fleece, enak dipakai, lembut.</p>
+                <p>Tersedia ukuran S, M, L, XL, XXL</p>
+                <p>Pengiriman Via JNE, TIKI, J&amp;T</p>
+                <p><b>Pilihan:</b></p>
+                <div class="option-container">
+                    <div style="width: 60px; height: 50px;" class="option" onclick="selectOption(1)">L</div>
+                    <div style="width: 19%; height: 50px;" class="option" onclick="selectOption(2)">L</div>
+                </div>
+                <br/>
+                <h3 id="price">Harga Rp. 100.000,-</h3>
+                <button onclick="buyViaWhatsApp()" class="fa fa-whatsapp" style="font-size:20px"> Beli via WhatsApp </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(thumbnail) {
+            var mainImage = document.getElementById("mainImage");
+            mainImage.src = thumbnail.src;
+            mainImage.alt = thumbnail.alt;
+        }
+
+        function buyViaWhatsApp() {
+            window.location.href = "https://wa.me/6285854194810";
+        }
+
+        function selectOption(option) {
+            var option1 = document.querySelector('.option-container .option:nth-child(1)');
+            var option2 = document.querySelector('.option-container .option:nth-child(2)');
+            var priceElement = document.getElementById('price');
+
+            if (option === 1) {
+                option1.classList.add('selected');
+                option2.classList.remove('selected');
+                priceElement.innerHTML = 'Harga Rp. 100.000,-';
+            } else {
+                option1.classList.remove('selected');
+                option2.classList.add('selected');
+                priceElement.innerHTML = 'Harga Rp. 150.000,-';
+            }
+        }
+    </script>
+</body>
+</html>
